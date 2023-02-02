@@ -9,8 +9,8 @@ export default function Form(props) {
     }
 
     const clickAddNew = (e) => {
-        setNewWork("");
         props.handleAddNew(e);
+        setNewWork("");
     }
 
     return (
@@ -25,6 +25,7 @@ export default function Form(props) {
                             className="form-control"
                             placeholder=""
                             aria-describedby="helpId"
+                            value={newWork}
                             onChange={onChangeHandle}
                         />
                     </div>
