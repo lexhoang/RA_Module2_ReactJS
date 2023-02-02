@@ -20,14 +20,17 @@ export default function ExUseState() {
     // Sử dụng useEffect
     //1. Sử dụng useEffect(callback)--> được gọi khi render(componentDidMount) hoặc re-render(ComponentDidUpdate)
     useEffect(() => {
+        // Xử lý logic khi UseEffect được gọi
         console.log("useEffect(callback) được gọi khi render và re-render");
     });
     //2. Sử dụng useEffect(callback,[])--> được gọi khi render(componentDidMount)
     useEffect(() => {
+        // Xử lý logic khi UseEffect được gọi
         console.log("useEffect(callback,[]) được gọi khi render");
     }, []);
     //3. Sử dụng useEffect(callback,[deps]) --> được gọi khi render và khi deps thay đổi
     useEffect(() => {
+        // Xử lý logic khi UseEffect được gọi
         console.log("useEffect(callback,[count,list] được gọi khi render và khi count thay đổi)");
     }, [count, list]);
     return (
