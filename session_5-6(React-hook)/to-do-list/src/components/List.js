@@ -8,7 +8,7 @@ export default function List(props) {
     const onChangeHandleList = (e) => {
         setEditWork(e.target.value);
     }
-    
+
     const handleEdit = (index) => {
         setId(index);
         setEditWork("");
