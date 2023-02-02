@@ -31,7 +31,7 @@ export default function Form(props) {
                     </div>
                 </div>
                 <div className="col-3">
-                    <button className="btn btn-primary" onClick={(e) => { e.preventDefault(); clickAddNew(newWork) }}>Add New</button>
+                    <button className="btn btn-success" onClick={(e) => { e.preventDefault(); clickAddNew(newWork) }}> + Add New </button>
                 </div>
             </div>
         </form>

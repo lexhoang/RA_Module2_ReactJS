@@ -17,11 +17,19 @@ function App() {
     setWork(work => [...work, data]);
   }
 
+  const handleUpdate = (data, index) => {
+    // console.log("data", data, "index", index);
+    let arr = work
+    arr[index] = data
+    console.log(arr);
+    console.log(index);
+    setWork(arr);
+  }
 
   return (
     <div className="App">
       <Form handleAddNew={handleAddNew} />
-      <List handleDelete={handleDelete} list={work} />
+      <List handleDelete={handleDelete} list={work} setList={setWork} handleUpdate={handleUpdate} />
     </div>
   );
 }
