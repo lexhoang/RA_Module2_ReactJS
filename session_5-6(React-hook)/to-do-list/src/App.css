@@ -1,9 +1,9 @@
 .App {
   text-align: center;
-  width: 600px;
-  margin: 0 auto;
-  background-color: rgb(252, 202, 189);
-  padding: 10px 20px;
+}
+
+.bg-form {
+  background-color: rgb(255, 234, 214)
 }
 
 .App-logo {
