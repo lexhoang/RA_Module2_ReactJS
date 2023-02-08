@@ -7,8 +7,8 @@ export default function ListStudent(props) {
     return (
         <div>
             <Title level={2} className="my-4">Danh sách học viên</Title>
-            <table class="table table-striped">
-                <thead class="thead-inverse">
+            <table className="table table-striped">
+                <thead className="thead-inverse">
                     <tr>
                         <th>#</th>
                         <th>Mã sinh viên</th>
@@ -22,7 +22,7 @@ export default function ListStudent(props) {
                     {
                         props.listStudent.map((student, index) => {
                             return (
-                                <Student key={index} index={index} student={student} />
+                                <Student key={index} index={index} student={student} handleDeleteStudent={() => props.handleDeleteStudent(student.studentId)} />
                             )
                         })
                     }

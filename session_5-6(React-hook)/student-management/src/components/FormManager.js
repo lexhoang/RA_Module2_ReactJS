@@ -1,8 +1,7 @@
 import React from 'react'
 import { Button, Form, Input } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, SendOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
-
 const { Title } = Typography;
 
 const onFinish = (values) => {
@@ -29,7 +28,7 @@ export default function FormManager() {
                         },
                     ]}
                 >
-                    <Input size="medium" placeholder="large size" prefix={<UserOutlined />} />
+                    <Input size="medium" placeholder="Mã sinh viên" prefix={<UserOutlined />} />
                 </Form.Item>
 
                 <Form.Item label="Tên sinh viên" name="Tên sinh viên"
@@ -40,7 +39,7 @@ export default function FormManager() {
                         },
                     ]}
                 >
-                    <Input size="medium" placeholder="large size" prefix={<UserOutlined />} />
+                    <Input size="medium" placeholder="Tên sinh viên" prefix={<UserOutlined />} />
                 </Form.Item>
 
                 <Form.Item label="Tuổi" name="Tuổi"
@@ -51,7 +50,7 @@ export default function FormManager() {
                         },
                     ]}
                 >
-                    <Input size="medium" placeholder="large size" prefix={<UserOutlined />} />
+                    <Input size="medium" placeholder="Tuổi" prefix={<UserOutlined />} />
                 </Form.Item>
 
                 <Form.Item label="Giới tính" name="Giới tính"
@@ -62,7 +61,7 @@ export default function FormManager() {
                         },
                     ]}
                 >
-                    <Input size="medium" placeholder="large size" prefix={<UserOutlined />} />
+                    <Input size="medium" placeholder="Giới tính" prefix={<UserOutlined />} />
                 </Form.Item>
 
                 <Form.Item label="Ngày sinh" name="Ngày sinh"
@@ -73,7 +72,7 @@ export default function FormManager() {
                         },
                     ]}
                 >
-                    <Input size="medium" placeholder="large size" prefix={<UserOutlined />} />
+                    <Input size="medium" placeholder="Ngày sinh" prefix={<UserOutlined />} />
                 </Form.Item>
 
                 <Form.Item label="Nơi sinh" name="Nơi sinh"
@@ -84,7 +83,7 @@ export default function FormManager() {
                         },
                     ]}
                 >
-                    <Input size="medium" placeholder="large size" prefix={<UserOutlined />} />
+                    <Input size="medium" placeholder="Nơi sinh" prefix={<UserOutlined />} />
                 </Form.Item>
 
                 <Form.Item label="Địa chỉ" name="Địa chỉ"
@@ -95,17 +94,17 @@ export default function FormManager() {
                         },
                     ]}
                 >
-                    <Input size="medium" placeholder="large size" prefix={<UserOutlined />} />
+                    <Input size="medium" placeholder="Địa chỉ" prefix={<UserOutlined />} />
                 </Form.Item>
 
                 <Form.Item
                     wrapperCol={{
                         offset: 8,
-                        span: 7,
+                        span: 10,
                     }}
                 >
-                    <Button type="primary" htmlType="submit" size='large'>
-                        Submit
+                    <Button type="primary" htmlType="submit" size='large' className='bg-success' >
+                        <SendOutlined />  Submit
                     </Button>
                 </Form.Item>
             </Form>

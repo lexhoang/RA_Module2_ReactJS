@@ -6,7 +6,7 @@ import FormManager from './components/FormManager';
 import ListStudent from './components/listStudent/ListStudent';
 
 import { Col, Row } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const getStudentList = [
   { id: 1, studentId: "SV001", studentName: "Nguyễn Văn A", age: 20, sex: true, birthDate: "2003-04-15", birthPlace: "HN", address: "Số 1 Phạm Hùng" },
@@ -17,14 +17,54 @@ const getStudentList = [
 ]
 
 function App() {
-  const [listStudent, setListStudent] = useState(getStudentList)
+  const [listStudent, setListStudent] = useState(getStudentList);
+  const [searchData, setSearchData] = useState([]);
+  const [sortDir, setSortDir] = useState("");
+  const [sortBy, setSortBy] = useState("");
+
+  const displayListStudent = searchData == "" ? listStudent : searchData;
+
+
+  const handleSearch = (keySearch) => {
+    let searchDataList = listStudent.filter(student => student.studentName.includes(keySearch));
+    setSearchData(searchDataList);
+  }
+
+  const handleDeleteStudent = (IdDelete) => {
+    let deleteStudent = listStudent.filter(student => student.studentId !== IdDelete);
+    setListStudent(deleteStudent);
+    setSearchData("");
+  }
+
+  const handleSortList = (sortDir, sortBy) => {
+    setSortDir(sortDir);
+    setSortBy(sortBy);
+  }
+
+  if (sortDir !== '') {
+    if (sortDir == "studentName") {
+      if (sortBy == "ASC") {
+        displayListStudent.sort((a, b) => (a.studentName > b.studentName) ? 1 : (a.studentName < b.studentName) ? -1 : 0)
+      } else {
+        displayListStudent.sort((a, b) => (a.studentName > b.studentName) ? -1 : (a.studentName < b.studentName) ? 1 : 0)
+      }
+    } else {
+      if (sortBy == "ASC") {
+        displayListStudent.sort((a, b) => (a.age > b.age) ? 1 : (a.age < b.age) ? -1 : 0);
+      } else {
+        displayListStudent.sort((a, b) => (a.age > b.age) ? -1 : (a.age < b.age) ? 1 : 0);
+      }
+    }
+  }
+
+
 
   return (
     <div className="App">
       <Row>
         <Col span={14} className="shadow bg-body rounded">
-          <Control />
-          <ListStudent listStudent={listStudent} />
+          <Control handleSearch={handleSearch} handleSortList={handleSortList} />
+          <ListStudent listStudent={displayListStudent} handleDeleteStudent={handleDeleteStudent} />
         </Col>
 
         <Col span={1}></Col>

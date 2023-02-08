@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Row } from 'antd';
 import { Input, Select, Button } from 'antd';
-
+import { UserAddOutlined } from '@ant-design/icons'
 const { Search } = Input;
 
 
-const onSearch = (value) => console.log(value);
-const handleChange = (value) => {
-    console.log(`selected ${value}`);
-};
+export default function Control(props) {
+    const handleSearchStudent = (keySearch) => {
+        console.log(keySearch);
+        props.handleSearch(keySearch);
+    };
 
-export default function Control() {
+    const handleChangeSort = (value) => {
+        let valueSort = value;
+        let arraySort = valueSort.split('-');
+        console.log(arraySort);
+        props.handleSortList(arraySort[0], arraySort[1]);
+    };
+
     return (
         <div>
             <Row className="p-4 bg-light rounded">
@@ -20,7 +27,7 @@ export default function Control() {
                         allowClear
                         enterButton="Search"
                         size="large"
-                        onSearch={onSearch}
+                        onSearch={handleSearchStudent}
                     />
                 </Col>
                 <Col span={10}>
@@ -28,20 +35,21 @@ export default function Control() {
                         defaultValue="Sắp xếp"
                         style={{ width: 200 }}
                         size="large"
-                        onChange={handleChange}
+                        onChange={handleChangeSort}
                         options={[
-                            { value: 'jack', label: 'Jack' },
-                            { value: 'lucy', label: 'Lucy' },
-                            { value: 'Yiminghe', label: 'yiminghe' },
-                            { value: 'disabled', label: 'Disabled', disabled: true },
+                            // { value: '', label: 'Sắp xếp' },
+                            { value: 'studentName-ASC', label: 'Name-ASC' },
+                            { value: 'studentName-DESC', label: 'Name-DESC' },
+                            { value: 'ageStudent-ASC', label: 'age-ASC' },
+                            { value: 'ageStudent-DESC', label: 'age-DESC' },
                         ]}
                     />
                 </Col>
                 <Col span={4}>
-                    <Button type="primary" size="large">Add new</Button>
+                    <Button type="primary" size="large"><UserAddOutlined style={{ fontSize: '24px' }} />Thêm mới</Button>
                 </Col>
             </Row>
 
-        </div>
+        </div >
     )
 }
