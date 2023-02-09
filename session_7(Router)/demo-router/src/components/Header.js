@@ -12,11 +12,25 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-
 import { NavLink } from 'react-router-dom';
 
 import { useState } from 'react';
 
+let navLinkStyle = ({ isActive }) => ({
+    color: isActive ? 'orange' : 'white',
+    textDecoration: isActive ? "underline" : "none",
+    display: 'block',
+    fontWeight: isActive ? "bold" : "500",
+    fontSize: "16px",
+})
+
+let navLinkResponsiveStyle = ({ isActive }) => ({
+    color: isActive ? 'orange' : 'black',
+    '&:hover': {
+        color: "orange"
+    },
+    textDecoration: "none",
+})
 
 const pages = [
     {
@@ -28,8 +42,8 @@ const pages = [
         link: "/about"
     },
     {
-        name: "User",
-        link: "/user"
+        name: "Contact",
+        link: "/contact"
     },
 ];
 
@@ -58,7 +72,6 @@ function Header() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -74,9 +87,10 @@ function Header() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />LOGO
                     </Typography>
 
+                    {/* START RESPONSIVE */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -108,17 +122,13 @@ function Header() {
                         >
                             {pages.map((page, index) => (
                                 <MenuItem key={index} onClick={handleCloseNavMenu}>
-                                    <NavLink
-                                        to={page.link}
-                                        style={{ textDecoration: "none", color: 'black' }}
-                                    >
-                                        {page.name}
+                                    <NavLink to={page.link} style={navLinkResponsiveStyle}>
+                                        <Typography textAlign="center" sx={{ '&:hover': { color: "orange" } }}>{page.name}</Typography>
                                     </NavLink>
                                 </MenuItem>
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -135,20 +145,18 @@ function Header() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />LOGO
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                    {/* END RESPONSIVE */}
+
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'space-evenly', }} style={{ width: '50%' }}>
                         {pages.map((page, index) => (
                             <Button
                                 key={index}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                <NavLink
-                                    to={page.link}
-                                    style={{ textDecoration: "none", color: 'white', display: 'block' }}
-                                >
-                                    {page.name}
+                                <NavLink to={page.link} style={navLinkStyle} >
+                                    <Typography variant="body1" sx={{ '&:hover': { color: "orange", } }}>{page.name}</Typography>
                                 </NavLink>
                             </Button>
                         ))}
@@ -176,8 +184,8 @@ function Header() {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                            {settings.map((setting, index) => (
+                                <MenuItem key={index} onClick={handleCloseUserMenu}>
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}
@@ -185,7 +193,7 @@ function Header() {
                     </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 }
 export default Header;
