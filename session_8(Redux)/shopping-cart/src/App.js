@@ -1,16 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
-import TittleComp from './components/TittleComp';
-import ListProductComp from './components/ListProductComp';
-import CartComp from './components/cart/CartComp';
+import ListProductComp from './components/listProduct/ListProductComp';
+import ListCartComp from './components/cart/ListCartComp';
 
 function App() {
   return (
     <div className="container">
-      <TittleComp />
+      {/* TITLE : START */}
+      <div className="page-header">
+        <h1>
+          Redux - Shopping Cart <small>ReactJS</small>
+        </h1>
+      </div>
+      {/* TITLE : END */}
       <div className="row">
         <ListProductComp />
-        <CartComp />
+        <ListCartComp />
       </div>
     </div>
   );
