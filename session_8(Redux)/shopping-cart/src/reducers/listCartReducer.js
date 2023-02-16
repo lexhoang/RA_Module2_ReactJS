@@ -1,70 +1,85 @@
-import { ACT_BUY } from "../constant/actionTypes";
-import { SHOPPING_CART } from '../constant/cartTypes';
+import * as actionTypes from "../constant/actionTypes";
 
-let initialState = [];
+const initialState = [];
 
-//Giỏ hàng được lưu ở localStorage với tên là shoppingCart
-let shoppingCart = JSON.parse(localStorage.getItem(SHOPPING_CART));
+// Lấy dữ liệu trên localStorage
+let getListCart = JSON.parse(localStorage.getItem("shoppingCart"));
+let initialCart = getListCart !== null && getListCart.length > 0 ? getListCart : initialState;
 
-initialState = (shoppingCart != null && shoppingCart.length > 0) ? shoppingCart : initialState;
 
-const callTotalAmount = (carts) => {
-    let totalAmount = 0;
-    carts.forEach(cart => {
-        totalAmount += cart.quantity * cart.product.price;
-    })
-    return totalAmount;
+/**
+ * List cartredurce
+ * @param {*} state
+ * @param {*} action
+ * @returns
+ */
+
+const listCartReducer = (state = initialCart, action) => {
+    switch (action.type) {
+        case actionTypes.ACT_BUY:
+            // console.log("sản phẩm được mua: ", action.payload.product);
+            // console.log("số lượng được mua: ", action.payload.quantity);
+            // console.log(state);
+
+            let index = getIndexCart(state, action.payload.product)
+            if (index !== -1) {
+                state[index].quantity += parseInt(action.payload.quantity)
+            } else {
+                state = [...state, action.payload];
+            }
+            localStorage.setItem("shoppingCart", JSON.stringify(state));
+            localStorage.setItem("totalBill", JSON.stringify(TOTAL_BILL(state)));
+            // console.log("sản phẩm trong giỏ hàng: ", state);
+            return [...state];
+
+
+        case actionTypes.ACT_UPDATE:
+            let indexEdit = getIndexCart(state, action.payload.product)
+            state[indexEdit].quantity = action.payload.quantity;
+            localStorage.setItem("shoppingCart", JSON.stringify(state));
+            localStorage.setItem("totalBill", JSON.stringify(TOTAL_BILL(state)));
+            return [...state];
+
+        case actionTypes.ACT_DELETE:
+            let newListProduct = state.filter((listProduct) =>
+                listProduct.product.productId != action.payload);
+            localStorage.setItem("shoppingCart", JSON.stringify(newListProduct));
+            localStorage.setItem("totalBill", JSON.stringify(TOTAL_BILL(newListProduct)));
+            return newListProduct;
+
+
+        default:
+            return state
+    }
 }
 
-const getIndexCart = (carts, productId) => {
-    for (let i = 0; i < carts.length; i++) {
-        if (carts[i].product.productId == productId) {
-            return i;
+/**
+ * Lấy ra vị trí của product trong listcart
+ * @param {*} listCarts
+ * @param {*} product
+ * @returns Vị trí của product trong listcart
+ * CreatedDate: 16/02/2023
+ * CreatedBy: nvquy
+ * ModifiedDate:
+ * ModifiedBy:
+ */
+
+const getIndexCart = (listCarts, product) => {
+    for (let index = 0; index < listCarts.length; index++) {
+        if (listCarts[index].product.productId === product.productId) {
+            return index;
         }
     }
     return -1;
 }
 
 
-
-const listCartReducer = (state = initialState, action) => {
-    switch (action.type) {
-        //Mua hàng
-        case ACT_BUY:
-            //Chưa từng mua hàng
-            if (state.length == 0) {
-                let cartNew = {
-                    product: action.payload.product,
-                    quantity: action.payload.quantity
-                }
-                state = [...state, cartNew];
-                localStorage.setItem(SHOPPING_CART, JSON.stringify(state));
-                localStorage.setItem('totalAmount', callTotalAmount(state));
-                return state
-
-                //Đã từng mua hàng
-            } else {
-                let index = getIndexCart(state, action.payload.product.productId);
-                if (index === -1) {
-                    //sản phẩm chưa tồn tại trong giỏ hàng
-                    let cartNew = {
-                        product: action.payload.product,
-                        quantity: action.payload.quantity
-                    }
-                    state.push(cartNew);
-                } else {
-                    //sản phẩm đã tồn tại trong giỏ hàng
-                    state[index].quantity += parseInt(action.payload.quantity);
-                }
-                localStorage.setItem(SHOPPING_CART, JSON.stringify(state));
-                localStorage.setItem('totalAmount', callTotalAmount(state));
-                return [...state];
-            }
-
-
-        default:
-            return state
-
-    }
+const TOTAL_BILL = (listCart) => {
+    let total = 0;
+    listCart.forEach((cart) => {
+        total += parseInt(cart.product.price * cart.quantity)
+    })
+    return total;
 }
+
 export default listCartReducer;

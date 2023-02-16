@@ -1,39 +1,61 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { act_delete } from '../../actions';
+import { act_update } from '../../actions';
 
 export default function CartBody(props) {
-    const { stt, cart } = props;
-    const [quantity, setQuantity] = useState(1);
-    let quantityBuy = (cart.quantity > 0) ? cart.quantity : quantity;
+    const { cartItem, stt } = props;
+    const [quantity, setQuantity] = useState();
+
+    const dispatch = useDispatch();
+
+    const handleEdit = () => {
+        dispatch(act_update(cartItem.product, quantity))
+    }
+
+    const handleDelete = (IdProductDel) => {
+        dispatch(act_delete(IdProductDel))
+    }
+
+    useEffect(() => {
+        setQuantity(cartItem.quantity);
+    }, [cartItem.quantity]);
+
+
     return (
         <tr>
-            <th scope="row">{stt + 1}</th>
-            <td>{cart.product.productName}</td>
-            <td>{cart.product.price} USD</td>
+            <th scope="row">{stt}</th>
+            <td>{cartItem.product.productName}</td>
+            <td>{cartItem.product.price} USD</td>
             <td>
                 <input
                     name="cart-item-quantity-1"
                     type="number"
+                    value={quantity}
                     min={1}
-                    value={quantityBuy}
                     onChange={(e) => setQuantity(e.target.value)}
                 />
             </td>
             <td>
-                <strong>{cart.product.price * cart.quantity} USD</strong>
+                <strong>{cartItem.product.price * cartItem.quantity} USD</strong>
             </td>
             <td>
-                <button
+                <a
                     className="label label-info update-cart-item"
+                    href="#"
                     data-product=""
+                    onClick={() => handleEdit()}
                 >
                     Update
-                </button>
-                <button
+                </a>
+                <a
                     className="label label-danger delete-cart-item"
+                    href="#"
                     data-product=""
+                    onClick={() => handleDelete(cartItem.product.productId)}
                 >
                     Delete
-                </button>
+                </a>
             </td>
         </tr>
     )
