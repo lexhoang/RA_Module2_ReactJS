@@ -1,6 +1,6 @@
 import React from 'react'
-import ImgClient from "../assets/images/client.png";
-import ImgItems from "../assets/images/items.png";
+import ImgClient from "../../assets/images/client.png";
+import ImgItems from "../../assets/images/items.png";
 
 export default function ClientSection() {
     return (

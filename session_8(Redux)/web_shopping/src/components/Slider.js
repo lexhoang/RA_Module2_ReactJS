@@ -4,7 +4,7 @@ import Hero from "../assets/images/hero.png";
 
 export default function Slider() {
     return (
-        <section className="slider_section position-relative">
+        <section className="slider_section position-relative" style={{ backgroundColor: " #ff47d9" }}>
             <div
                 id="carouselExampleControls"
                 className="carousel slide"

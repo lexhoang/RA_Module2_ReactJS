@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImagesFind } from "../assets/Images";
+import { ImagesFind } from "../../assets/Images";
 
 
 export default function FindComp() {
