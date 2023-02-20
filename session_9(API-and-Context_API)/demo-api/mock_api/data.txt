@@ -1,0 +1,64 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "studentId": "S001",
+      "studentName": "Bùi Thị Xuân",
+      "age": 18
+    },
+    {
+      "id": 2,
+      "studentId": "S002",
+      "studentName": "Nguyễn Văn Kim Đồng",
+      "age": 16
+    },
+    {
+      "id": 3,
+      "studentId": "S003",
+      "studentName": "Lý Tự Trọng",
+      "age": 24
+    },
+    {
+      "id": 4,
+      "studentId": "S004",
+      "studentName": "Nguyễn Linh San",
+      "age": 20
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "productId": "P001",
+      "productName": "Quần Culottes",
+      "description": "Quần Culottes co dãn 4 chiều, mặc đi làm hay lên bar đều tôn dáng cặp giò của bạn"
+    },
+    {
+      "id": 2,
+      "productId": "P002",
+      "productName": "Quần Đùi",
+      "description": "Đủ các màu 7 sắc cầu vồng"
+    },
+    {
+      "id": 3,
+      "productId": "P003",
+      "productName": "Áo Cardigan",
+      "description": "Áo khoác, áo nỉ cadigan  AIS viền bo đỏ form rộng Hàn Quốc dành cho nữ. Cadigan trùm mông nha các nàng, tay bồng!!! Cadigan hình thêu chỉ nổi siêu xuất sắc lun các chị em mình ớiii"
+    },
+    {
+      "id": 4,
+      "productId": "P004",
+      "productName": "Quần Kaki",
+      "description": "Quần Kaki Nam Trang Trọng Size từ 29-34 vải không xù lông, vải không chùn. \n+ Chất vải kaki mềm mịn, đẹp, bền, không bai, không xù, không bám dính \n+ Đường may tinh tế, chỉn chu, khéo léo \n+ Màu sắc đa dạng, trẻ trung \n+ Chất lượng sản phẩm tốt, giá cả hợp lý Sản phẩm như hình nên bạn yên tâm nhé."
+    },
+    {
+      "productId": "P005",
+      "productName": "Quần Culottes",
+      "description": "Quần Culottes co dãn 4 chiều, mặc đi làm hay lên bar đều tôn dáng cặp giò của bạn",
+      "id": 5
+    },
+    {
+      "productId": "P006",
+      "id": 6
+    }
+  ]
+}

@@ -21,7 +21,7 @@ export default function ListCartComp() {
                             <thead>
                                 <tr>
                                     <th width="4%">#</th>
-                                    <th>productName</th>
+                                    <th>Product Name</th>
                                     <th width="15%">Price</th>
                                     <th width="4%">Quantity</th>
                                     <th width="20%">Subtotal</th>
