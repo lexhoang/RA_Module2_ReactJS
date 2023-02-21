@@ -3,23 +3,27 @@ import './App.css';
 import TodoList from './components/TodoList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from './components/Form'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import sweetAlert from 'sweetalert';
 
+// const LISTTASK = [
+//   { id: 1, content: "Đi chơi" },
+//   { id: 2, content: "Đi học" },
+//   { id: 3, content: "Đi làm" },
+// ]
+// localStorage.setItem('listTasks', JSON.stringify(LISTTASK));
 
+const getListTasks = JSON.parse(localStorage.getItem('listTasks'));
 function App() {
-  const [list, setList] = useState([
-    { id: 1, content: "Đi chơi" },
-    { id: 2, content: "Đi học" },
-    { id: 3, content: "Đi làm" },
-  ]);
+  const [list, setList] = useState(getListTasks);
 
   const handleAddNew = (idAdd, dataAdd) => {
     if (idAdd.trim() !== "" && dataAdd.trim() !== "") {
-      setList((list) => [...list, { id: idAdd, content: dataAdd }]);
+      setList([...list, { id: idAdd, content: dataAdd }]);
     } else {
       sweetAlert("Hãy nhập đủ dữ liệu", "Bạn chưa nhập ID hoặc công việc cần làm!!!", "error")
     }
+    localStorage.setItem('listTasks', JSON.stringify(list));
   }
 
   const handleDelete = (idDelete) => {
@@ -27,6 +31,7 @@ function App() {
     let listTodo = [];
     listTodo = list.filter((element) => element.id !== idDelete)
     console.log(listTodo);
+    localStorage.setItem('listTasks', JSON.stringify(listTodo));
     setList(listTodo)
   }
 
@@ -38,8 +43,13 @@ function App() {
         setList(list);
       }
     }
+    localStorage.setItem('listTasks', JSON.stringify(list));
   }
 
+
+  useEffect(() => {
+    localStorage.setItem('listTasks', JSON.stringify(list));
+  }, [list])
   return (
     <div className="App">
       <div className="container">
