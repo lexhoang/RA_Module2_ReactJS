@@ -4,7 +4,7 @@
       "id": "001",
       "studentName": "Hạ Linh San",
       "age": "18",
-      "country": "DN",
+      "country": "HN",
       "comment": "Xinh nhất Java 1"
     },
     {
@@ -18,7 +18,7 @@
       "id": "003",
       "studentName": "Phan Hoàng Trang",
       "age": "20",
-      "country": "DN",
+      "country": "HN",
       "comment": "Xinh hơn Linh San"
     },
     {
@@ -36,11 +36,11 @@
       "comment": "Xinh hơn Giang"
     },
     {
-      "id": "da",
-      "studentName": "ad",
-      "age": "da",
+      "id": "007",
+      "studentName": "Phan Hoàng Trang",
+      "age": "20",
       "country": "HN",
-      "comment": "da"
+      "comment": "Xinh hơn Linh San"
     }
   ]
 }

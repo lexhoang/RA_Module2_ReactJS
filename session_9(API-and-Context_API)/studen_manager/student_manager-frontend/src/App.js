@@ -1,4 +1,3 @@
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
@@ -8,64 +7,60 @@ import FormDataStudent from './components/FormDataStudent';
 import ListStudents from './components/ListStudents';
 
 
-
 function App() {
   const [listStudent, setListStudent] = useState([]);
-  // console.log(listStudent);
-  const [studentEdit, setStudentEdit] = useState({ action: "add", value: "" });
+  const [studentEdit, setStudentEdit] = useState({ action: "", value: "", color: "success" });
 
-  const getAllApi = () => {
+  const getAllAPI = () => {
     axios.get('http://localhost:8000/students')
-      .then((res) => setListStudent(res.data))
-      .catch((error) => console.log("Error: ", error))
+      .then((response) => setListStudent(response.data))
+      .catch((error) => console.error(error))
   }
 
-  const addStudent = async (student) => {
+  const postStudentApi = async (student) => {
     await axios.post('http://localhost:8000/students', student)
+      .then((res) => console.log(res.data))
+      .catch((error) => console.error(error));
+
+    getAllAPI()
+  }
+
+  const handleEditStudent = (student) => {
+    setStudentEdit({ action: "edit", value: student, color: "outline-success" });
+    console.log(student);
+  }
+
+  const putStudentApi = async (student) => {
+    await axios.put(`http://localhost:8000/students/${student.id}`, student)
+      .then((res) => console.log(res.data))
+      .catch((error) => console.error(error));
+
+    getAllAPI()
+  }
+
+  const deleteStudentAPI = async (studentID) => {
+    await axios.delete(`http://localhost:8000/students/${studentID}`)
       .then((res) => console.log(res))
       .catch((error) => console.error(error));
 
-    getAllApi();
-  }
-
-
-  const editStudent = (student) => {
-    setStudentEdit({ action: "edit", value: student })
-  }
-
-  const updateStudent = async (student) => {
-    // console.log(student);
-    await axios.put(`http://localhost:8000/students/${student.id}`, student)
-      .then((res) => console.log(res))
-      .catch(err => console.error(err))
-
-    getAllApi();
-  }
-
-  const deleteStudent = async (studentID) => {
-    console.log(studentID);
-    await axios.delete(`http://localhost:8000/students/${studentID}`)
-      .then((res) => console.log(res))
-      .catch((error) => console.error(error))
-
-    getAllApi();
+    getAllAPI()
   }
 
   useEffect(() => {
 
-    getAllApi();
-  }, []);
+    getAllAPI();
+  }, [])
 
   return (
     <div className="container-fluid">
       <h2 className="text-center mb-5">STUDENT MANAGER</h2>
       <div className="row justify-content-between align-self-stretch">
         <div className='col-5'>
-          <FormDataStudent addStudent={addStudent} listStudent={listStudent} studentEdit={studentEdit} setStudentEdit={setStudentEdit} updateStudent={updateStudent} />
+          <FormDataStudent postStudentApi={postStudentApi} studentEdit={studentEdit} setStudentEdit={setStudentEdit} putStudentApi={putStudentApi} />
         </div>
 
         <div className='col-6'>
-          <ListStudents listStudent={listStudent} editStudent={editStudent} deleteStudent={deleteStudent} />
+          <ListStudents listStudent={listStudent} deleteStudentAPI={deleteStudentAPI} handleEditStudent={handleEditStudent} />
         </div>
       </div>
     </div>

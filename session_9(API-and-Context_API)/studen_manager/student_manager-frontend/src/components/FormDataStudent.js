@@ -3,45 +3,42 @@ import React, { useState, useEffect } from 'react'
 export default function FormDataStudent(props) {
     const { studentEdit, setStudentEdit } = props;
 
-    const [studentInput, setStudentInput] = useState({ id: "", studentName: "", age: "", country: "", comment: "" })
 
+    const [listStudentInput, setListStudentInput] = useState({ id: "", studentName: "", age: "", country: "", comment: "" })
     const onChangeInput = (e) => {
-        setStudentInput({ ...studentInput, [e.target.name]: e.target.value })
+        setListStudentInput({ ...listStudentInput, [e.target.name]: e.target.value })
     }
 
-
     const handleAddStudent = () => {
-        console.log("Add");
-        props.addStudent(studentInput);
-        setStudentInput({ id: "", studentName: "", age: "", country: "", comment: "" });
-        setStudentEdit({ action: "add", value: "" })
+        props.postStudentApi(listStudentInput);
+        setStudentEdit({ action: "add", value: "", color: "success" });
     }
 
     const handleUpdateStudent = () => {
-        console.log("Update");
-        props.updateStudent(studentInput);
-        setStudentInput({ id: "", studentName: "", age: "", country: "", comment: "" });
-        setStudentEdit({ action: "update", value: "" })
+        props.putStudentApi(listStudentInput);
+        setStudentEdit({ action: "update", value: "", color: "success" });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (studentEdit.value == "") {
-            handleAddStudent()
+        if (studentEdit.value != "") {
+            handleUpdateStudent();
         } else {
-            handleUpdateStudent()
+            handleAddStudent();
         }
+        setListStudentInput({ id: "", studentName: "", age: "", country: "", comment: "" })
     }
 
-    useEffect(() => {// null
+    const handleComeBack = () => {
+        setStudentEdit({ action: "comeback", value: "", color: "success" });
+        setListStudentInput({ id: "", studentName: "", age: "", country: "", comment: "" })
+    }
+
+    useEffect(() => {
         if (studentEdit.value !== "") {
-            setStudentInput(studentEdit.value)
+            setListStudentInput(studentEdit.value)
         }
-        // console.log("ID:", studentInput.id);
-    }, [studentEdit]);
-
-
-
+    }, [studentEdit])
     return (
         <form className="form-inline" onSubmit={handleSubmit}>
             <table className="table table-striped table-inverse table-responsive">
@@ -56,7 +53,7 @@ export default function FormDataStudent(props) {
                             <label htmlFor="id">ID</label>
                         </td>
                         <td>
-                            <input type="text" disabled={studentEdit.action === "edit" ? true : ""} value={studentInput.id} name="id" onChange={onChangeInput} id="id" className="form-control" placeholder="" aria-describedby="helpId" />
+                            <input type="text" disabled={studentEdit.action == "edit" && true} value={listStudentInput.id} name='id' onChange={onChangeInput} id="id" className="form-control" placeholder="" aria-describedby="helpId" />
                         </td>
                     </tr>
 
@@ -65,7 +62,7 @@ export default function FormDataStudent(props) {
                             <label htmlFor="name">Student Name</label>
                         </td>
                         <td>
-                            <input type="text" value={studentInput.studentName} name="studentName" onChange={onChangeInput} id="name" className="form-control" placeholder="" aria-describedby="helpId" />
+                            <input type="text" value={listStudentInput.studentName} name='studentName' onChange={onChangeInput} id="studentName" className="form-control" placeholder="" aria-describedby="helpId" />
                         </td>
                     </tr>
 
@@ -74,7 +71,7 @@ export default function FormDataStudent(props) {
                             <label htmlFor="age">Age</label>
                         </td>
                         <td>
-                            <input type="text" value={studentInput.age} name="age" onChange={onChangeInput} id="age" className="form-control" placeholder="" aria-describedby="helpId" />
+                            <input type="text" value={listStudentInput.age} name='age' onChange={onChangeInput} id="age" className="form-control" placeholder="" aria-describedby="helpId" />
                         </td>
                     </tr>
 
@@ -83,7 +80,7 @@ export default function FormDataStudent(props) {
                             <label htmlFor="country">Country</label>
                         </td>
                         <td>
-                            <select value={studentInput.country} name="country" onChange={onChangeInput} className="form-control">
+                            <select className="form-control" value={listStudentInput.country} name='country' onChange={onChangeInput}>
                                 <option value="NOT">Chọn Địa Chỉ</option>
                                 <option value="HN">Hà Nội</option>
                                 <option value="DN">Đà Nẵng</option>
@@ -97,20 +94,39 @@ export default function FormDataStudent(props) {
                             <label htmlFor="comment">Comment</label>
                         </td>
                         <td>
-                            <input type="text" value={studentInput.comment} name="comment" onChange={onChangeInput} id="comment" className="form-control" placeholder="" aria-describedby="helpId" />
+                            <input type="text" value={listStudentInput.comment} name='comment' onChange={onChangeInput} id="comment" className="form-control" placeholder="" aria-describedby="helpId" />
                         </td>
                     </tr>
 
-
-                    <tr>
+                    {/* <tr>
                         <td>
-                            <input type="submit" className="form-control btn btn-success" value={studentEdit.action === "edit" ? "Update" : "Add New"} />
+                            <input type="submit" className={`form-control btn btn-${studentEdit.color}`} value={studentEdit.value !== "" ? "Update" : "Add New"} />
                         </td>
 
-                        <td></td>
-                    </tr>
+                        <td>
+                            {
+                                studentEdit.value !== "" ?
+                                    <button className="btn btn-info" onClick={() => handleComeBack()}>Quay lại</button>
+                                    : ""
+                            }
+                        </td>
+                    </tr> */}
                 </tbody>
             </table>
+            <div className='row'>
+                <div className='col-6'>
+                    <input type="submit" className={`form-control btn btn-${studentEdit.color}`} value={studentEdit.value !== "" ? "Update" : "Add New"} />
+                </div>
+
+                <div className='col-6 mx-auto text-center'>
+                    {
+                        studentEdit.value !== "" ?
+                            <button className="w-50 btn btn-outline-info" onClick={() => handleComeBack()}>Quay lại</button>
+                            : ""
+                    }
+                </div>
+
+            </div>
         </form>
     )
 }
