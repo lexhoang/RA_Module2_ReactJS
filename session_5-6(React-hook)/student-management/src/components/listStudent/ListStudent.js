@@ -4,6 +4,8 @@ import { Typography } from 'antd';
 
 const { Title } = Typography
 export default function ListStudent(props) {
+    const { listStudent } = props;
+
     return (
         <div>
             <Title level={2} className="my-4">Danh sách học viên</Title>
@@ -20,9 +22,13 @@ export default function ListStudent(props) {
                 </thead>
                 <tbody>
                     {
-                        props.listStudent.map((student, index) => {
+                        listStudent.map((student, index) => {
                             return (
-                                <Student key={index} index={index} student={student} handleDeleteStudent={() => props.handleDeleteStudent(student.studentId)} />
+                                <Student key={index} index={index} student={student}
+                                    handleDetailStudent={() => props.handleDetailStudent(student)}
+                                    handleEditStudent={() => props.handleEditStudent(student)}
+                                    handleDeleteStudent={() => props.handleDeleteStudent(student.studentId)}
+                                />
                             )
                         })
                     }

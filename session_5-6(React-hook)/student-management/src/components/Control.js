@@ -46,7 +46,7 @@ export default function Control(props) {
                     />
                 </Col>
                 <Col span={4}>
-                    <Button type="primary" size="large"><UserAddOutlined style={{ fontSize: '24px' }} />Thêm mới</Button>
+                    <Button type="primary" size="large" onClick={() => props.btnAddNew()}><UserAddOutlined style={{ fontSize: '24px' }} />Thêm mới</Button>
                 </Col>
             </Row>
 
