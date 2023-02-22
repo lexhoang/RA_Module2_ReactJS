@@ -5,35 +5,40 @@
       "email": "hoangtrang@massage_hce.com",
       "password": "123456",
       "fullname": "Phan Hoàng Trang",
-      "age": 32
+      "age": 32,
+      "exp": "12 năm"
     },
     {
       "email": "linhsan@massage_hce.com",
       "password": "123456",
       "fullname": "Nguyễn Linh San",
       "age": 20,
-      "id": 2
+      "id": 2,
+      "exp": "2 năm"
     },
     {
       "email": "phuonghang@massage_hce.com",
       "password": "123456",
       "fullname": "Nguyễn Phương Hằng",
-      "age": 16,
-      "id": 3
+      "age": 18,
+      "id": 3,
+      "exp": "1 năm"
     },
     {
       "email": "ngoclinh@massage_hce.com",
       "password": "123456",
       "fullname": "Phan Ngọc Linh",
       "age": 18,
-      "id": 4
+      "id": 4,
+      "exp": "2 năm"
     },
     {
       "email": "kieutram@massage_hce.com",
       "password": "123456",
       "fullname": "Đặng Kiều Trâm",
       "age": 22,
-      "id": 5
+      "id": 5,
+      "exp": "4 năm"
     }
   ]
 }
