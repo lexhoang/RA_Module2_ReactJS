@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { act_get_user } from '../redux/actions';
 
 
 export default function ListUsers() {
+    const listUsers = useSelector(state => state.userReducer)
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     //Gọi action act_get_user khi component được mount
 
@@ -16,15 +19,18 @@ export default function ListUsers() {
     */
     useEffect(() => {
         //Thực hiện khi component mount
-        dispatch(act_get_user())
-    },[])
+        dispatch(act_get_user());
+    }, []);
+    //Lấy state từ store và hiển thị lên component
     return (
         <div>
             <h2 className='my-5 text-center text-danger fs-1 fw-bold fst-italic font-monospace text-decoration-underline'> Nhân Viên MAS-HCE </h2>
 
             <div className='col-10 mx-auto'>
+                <button className='btn btn-success my-3' onClick={() => navigate("/createUser")}> + Create User</button>
+
                 <table className="text-center table table-striped table-inverse table-responsive">
-                    <thead className="thead-inverse bg-success text-white">
+                    <thead className="thead-inverse bg-info text-white">
                         <tr className="thead-table">
                             <th>STT</th>
                             <th>Mã Số</th>
@@ -37,21 +43,27 @@ export default function ListUsers() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>1</td>
-                            <td>test@gmail.com</td>
-                            <td>123456</td>
-                            <td>Test</td>
-                            <td>20</td>
-                            <td>2 năm</td>
-                            <td>
-                                <div className='btn-group'>
-                                    <button class="btn btn-warning">Edit</button>
-                                    <button class="btn btn-danger">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
+                        {
+                            listUsers.map((user, index) => {
+                                return (
+                                    <tr key={user.id}>
+                                        <td>{index}</td>
+                                        <td>{user.id}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.password}</td>
+                                        <td>{user.fullname}</td>
+                                        <td>{user.age}</td>
+                                        <td>{user.exp}</td>
+                                        <td>
+                                            <div className='btn-group'>
+                                                <button className="btn btn-warning">Edit</button>
+                                                <button className="btn btn-danger">Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
             </div>

@@ -39,6 +39,30 @@
       "age": 22,
       "id": 5,
       "exp": "4 năm"
+    },
+    {
+      "email": "trongnhan23vn@gmail.com",
+      "password": "$2a$10$fOXJVTc79vyihswHrObbFOnjc3HBR4TybyNJ4OYlqiXkDyYSwjzT2",
+      "fullname": "nhân",
+      "age": "fdasb",
+      "exp": "jbfjd",
+      "id": 6
+    },
+    {
+      "email": "trongnhan123@gmail.com",
+      "password": "$2a$10$uIiQj3qtp8NeooXIHJS5Ke/5FFeUwFAdiiRIG43SurK0MEF8q3Tfq",
+      "fullname": "gnfdsnjk",
+      "age": "ngjkdsfnkj",
+      "exp": "fdngnskdg",
+      "id": 7
+    },
+    {
+      "email": "lagiang1811@gmail.com",
+      "password": "$2a$10$f4wojmTzUtYf3.2LVzf0G.4GuSV83WTACkPCdomZif49sOLuaeA7e",
+      "fullname": "jJ",
+      "age": "DA",
+      "exp": "AD",
+      "id": 8
     }
   ]
 }
