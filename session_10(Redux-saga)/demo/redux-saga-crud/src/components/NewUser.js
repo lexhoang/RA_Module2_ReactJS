@@ -19,7 +19,8 @@ export default function NewUser() {
         setNewUser({ ...newUser, [e.target.name]: e.target.value });
     }
 
-    const handleCreateNew = () => {
+    const handleCreateNew = (e) => {
+        e.preventDefault();
         dispatch(act_create_user(newUser));
         navigate('/')
     }

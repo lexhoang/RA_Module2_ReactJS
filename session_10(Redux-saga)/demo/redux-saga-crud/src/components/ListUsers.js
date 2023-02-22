@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { act_get_user } from '../redux/actions';
+import { act_delete_user, act_get_user } from '../redux/actions';
 
 
 export default function ListUsers() {
@@ -9,8 +9,18 @@ export default function ListUsers() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    //Gọi action act_get_user khi component được mount
+    const handleUpdate = (userUpdated) => {
+        localStorage.setItem('userUpdate', JSON.stringify(userUpdated));
+        //chuyển sang UpdateUser Component
+        navigate('/updateUser');
+    }
 
+    const handleDelete = (deleteId) => {
+        dispatch(act_delete_user(deleteId));
+    }
+
+
+    //Gọi action act_get_user khi component được mount
     /*
     useEffect:
         1. useEffect(callback): gọi khi mount và re-render
@@ -21,6 +31,7 @@ export default function ListUsers() {
         //Thực hiện khi component mount
         dispatch(act_get_user());
     }, []);
+
     //Lấy state từ store và hiển thị lên component
     return (
         <div>
@@ -33,7 +44,6 @@ export default function ListUsers() {
                     <thead className="thead-inverse bg-info text-white">
                         <tr className="thead-table">
                             <th>STT</th>
-                            <th>Mã Số</th>
                             <th>Email</th>
                             <th>Mật Khẩu</th>
                             <th>Tên</th>
@@ -47,17 +57,16 @@ export default function ListUsers() {
                             listUsers.map((user, index) => {
                                 return (
                                     <tr key={user.id}>
-                                        <td>{index}</td>
-                                        <td>{user.id}</td>
+                                        <td>{index + 1}</td>
                                         <td>{user.email}</td>
                                         <td>{user.password}</td>
                                         <td>{user.fullname}</td>
                                         <td>{user.age}</td>
-                                        <td>{user.exp}</td>
+                                        <td>{user.exp} năm</td>
                                         <td>
                                             <div className='btn-group'>
-                                                <button className="btn btn-warning">Edit</button>
-                                                <button className="btn btn-danger">Delete</button>
+                                                <button className="btn btn-warning" onClick={() => handleUpdate(user)}>Edit</button>
+                                                <button className="btn btn-danger" onClick={() => handleDelete(user.id)}>Delete</button>
                                             </div>
                                         </td>
                                     </tr>

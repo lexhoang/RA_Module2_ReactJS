@@ -23,3 +23,23 @@ export const act_create_user = (newUser) => {
     }
 
 }
+
+export const act_update_user = (updatedUser) => {
+    return {
+        type: actionTypes.USER_PATCH,
+        payload: updatedUser
+    }
+}
+// export const act_update_user = (updatedUser) => {
+//     return {
+//         type: actionTypes.USER_PUT,
+//         payload: updatedUser
+//     }
+// }
+
+export const act_delete_user = (deleteId) => {
+    return {
+        type: actionTypes.USER_DELETE,
+        payload: deleteId
+    }
+}

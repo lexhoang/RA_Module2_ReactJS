@@ -3,26 +3,26 @@
     {
       "id": 1,
       "email": "hoangtrang@massage_hce.com",
-      "password": "123456",
+      "password": "$2a$10$fgBiJV.ABQSRN8.Dfg0TTux8piJhDliNzAM5nR.ebw1edw1/BJ1yS",
       "fullname": "Phan Hoàng Trang",
-      "age": 32,
-      "exp": "12 năm"
+      "age": "33",
+      "exp": "12"
     },
     {
       "email": "linhsan@massage_hce.com",
-      "password": "123456",
+      "password": "$2a$10$00H9cBRdrCp4n4MulGu.se8MlQbei6mcRocmD9prTHGBx8yHG7ina",
       "fullname": "Nguyễn Linh San",
       "age": 20,
       "id": 2,
-      "exp": "2 năm"
+      "exp": "22"
     },
     {
       "email": "phuonghang@massage_hce.com",
-      "password": "123456",
+      "password": "$2a$10$KFQ6nTd4Zgxu45Bjxs7iweg0lCAUayZ3CTuIbJoJ5CZZeOG91eCue",
       "fullname": "Nguyễn Phương Hằng",
-      "age": 18,
+      "age": "19",
       "id": 3,
-      "exp": "1 năm"
+      "exp": "1"
     },
     {
       "email": "ngoclinh@massage_hce.com",
@@ -30,38 +30,30 @@
       "fullname": "Phan Ngọc Linh",
       "age": 18,
       "id": 4,
-      "exp": "2 năm"
+      "exp": "2"
     },
     {
       "email": "kieutram@massage_hce.com",
       "password": "123456",
       "fullname": "Đặng Kiều Trâm",
-      "age": 22,
+      "age": "22",
       "id": 5,
-      "exp": "4 năm"
+      "exp": "4"
     },
     {
       "email": "trongnhan23vn@gmail.com",
-      "password": "$2a$10$fOXJVTc79vyihswHrObbFOnjc3HBR4TybyNJ4OYlqiXkDyYSwjzT2",
-      "fullname": "nhân",
-      "age": "fdasb",
-      "exp": "jbfjd",
+      "password": "$2a$10$DZ.ur66Fg9NNc4Sd4zs9ZOVdt2tSK1hJowPLZPe20Q/9dfuOoUpNm",
+      "fullname": "nhânnnnn",
+      "age": "33",
+      "exp": "34",
       "id": 6
     },
     {
-      "email": "trongnhan123@gmail.com",
-      "password": "$2a$10$uIiQj3qtp8NeooXIHJS5Ke/5FFeUwFAdiiRIG43SurK0MEF8q3Tfq",
-      "fullname": "gnfdsnjk",
-      "age": "ngjkdsfnkj",
-      "exp": "fdngnskdg",
-      "id": 7
-    },
-    {
       "email": "lagiang1811@gmail.com",
-      "password": "$2a$10$f4wojmTzUtYf3.2LVzf0G.4GuSV83WTACkPCdomZif49sOLuaeA7e",
-      "fullname": "jJ",
-      "age": "DA",
-      "exp": "AD",
+      "password": "$2a$10$MM6il/HGwhurcV2HN/6Xl.jZztbpFlcQIyBXPYQM7Qb5/h6F1VCEa",
+      "fullname": "Giangg",
+      "age": "18",
+      "exp": "1",
       "id": 8
     }
   ]
