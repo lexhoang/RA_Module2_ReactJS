@@ -1,6 +1,9 @@
 // Khai báo các giá trị hằng số của thuộc tính type của action
 export const USER_GET = "USER_GET";
 export const USER_SUCCESS = "USER_SUCCESS";
+export const USER_SEARCH = "USER_SEARCH";
+export const USER_SORT = "USER_SORT";
+
 export const USER_POST = "USER_POST";
 export const USER_PUT = "USER_PUT";
 export const USER_DELETE = "USER_DELETE";

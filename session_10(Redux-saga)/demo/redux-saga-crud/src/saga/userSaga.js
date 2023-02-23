@@ -1,19 +1,38 @@
 import * as userService from "../api/userService";
 import { call, put } from 'redux-saga/effects';
 import { act_user_success } from "../redux/actions";
-import { USER_SUCCESS } from "../redux/constants/actionTypes";
+import * as actionTypes from "../redux/constants/actionTypes";
 
 //Các saga kết nối và làm việc service
-export const USER_SAGA_GET = function* () {
+export const USER_SAGA_GET = function* (action) {
+    console.log(action);
     try {
+        let listUser;
         //call(functionName, argument of function)
-        let listUser = yield call(userService.USER_GET_SERVICE);
+        // listUser = yield call(userService.USER_GET_SERVICE);
+
+        switch (action.type) {
+            case actionTypes.USER_GET:
+                //call(functionName, argument of function)
+                listUser = yield call(userService.USER_GET_SERVICE);
+                break;
+
+            case actionTypes.USER_SORT:
+                listUser = yield call(userService.USER_SORT_SERVICE, action.payload)
+                break;
+
+            default:
+                listUser = yield call(userService.USER_SEARCH_SERVICE, action.payload);
+        }
+
         //success ==> gọi action ==> put(action)
-        yield put(act_user_success(USER_SUCCESS, listUser));
+        yield put(act_user_success(actionTypes.USER_SUCCESS, listUser));
     } catch (error) {
         console.log("error ==> ", error);
     }
 }
+
+
 
 export const USER_SAGA_POST = function* (action) {
     try {
@@ -57,7 +76,7 @@ export const USER_SAGA_DELETE = function* (action) {
 
         //Xóa thành công ==> USER_SAGA_GET
         console.log("Xóa user thành công");
-        yield USER_SAGA_GET();
+        yield USER_SAGA_GET({ type: actionTypes.USER_GET });
     } catch (error) {
         console.log("error: ", error);
     }

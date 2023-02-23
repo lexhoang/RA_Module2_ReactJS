@@ -9,6 +9,20 @@ export const act_get_user = () => {
     }
 }
 
+export const act_user_search = (searchData) => {
+    return {
+        type: actionTypes.USER_SEARCH,
+        payload: searchData
+    }
+}
+
+export const act_user_sort = (sortData, orderData) => {
+    return {
+        type: actionTypes.USER_SORT,
+        payload: { sortData, orderData }
+    }
+}
+
 export const act_user_success = (actionType, data) => {
     return {
         type: actionType,

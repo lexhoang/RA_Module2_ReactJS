@@ -9,6 +9,17 @@ export const USER_GET_SERVICE = async () => {
     return response.data
 }
 
+export const USER_SEARCH_SERVICE = async (searchData) => {
+    let response = await instances.get(`users?fullname_like=${searchData}`);
+    return response.data;
+}
+
+export const USER_SORT_SERVICE = async ({ sortData, orderData }) => {
+    // let { sortData, orderData } = payload
+    let response = await instances.get(`users?_sort=${sortData}&_order=${orderData}`);
+    return response.data;
+}
+
 export const USER_POST_SERVICE = async (newUser) => {
     await instances.post("users", newUser)
 }

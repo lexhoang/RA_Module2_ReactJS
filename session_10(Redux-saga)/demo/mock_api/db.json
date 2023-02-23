@@ -3,58 +3,42 @@
     {
       "id": 1,
       "email": "hoangtrang@massage_hce.com",
-      "password": "$2a$10$fgBiJV.ABQSRN8.Dfg0TTux8piJhDliNzAM5nR.ebw1edw1/BJ1yS",
+      "password": "123456",
       "fullname": "Phan Hoàng Trang",
-      "age": "33",
-      "exp": "12"
+      "age": 32,
+      "exp": 2
     },
     {
+      "id": 2,
       "email": "linhsan@massage_hce.com",
-      "password": "$2a$10$00H9cBRdrCp4n4MulGu.se8MlQbei6mcRocmD9prTHGBx8yHG7ina",
+      "password": "123456",
       "fullname": "Nguyễn Linh San",
       "age": 20,
-      "id": 2,
-      "exp": "22"
+      "exp": 2
     },
     {
-      "email": "phuonghang@massage_hce.com",
-      "password": "$2a$10$KFQ6nTd4Zgxu45Bjxs7iweg0lCAUayZ3CTuIbJoJ5CZZeOG91eCue",
-      "fullname": "Nguyễn Phương Hằng",
-      "age": "19",
       "id": 3,
-      "exp": "1"
+      "email": "phuonghang@massage_hce.com",
+      "password": "$2a$10$r1hoCsXwlN4IKA/e37ycouTYTieHfHzNG.BKm0mxBllG/Ozar2MVS",
+      "fullname": "Nguyễn Phương Hằnggg",
+      "age": 16,
+      "exp": 2
     },
     {
+      "id": 4,
       "email": "ngoclinh@massage_hce.com",
       "password": "123456",
       "fullname": "Phan Ngọc Linh",
       "age": 18,
-      "id": 4,
-      "exp": "2"
+      "exp": 2
     },
     {
+      "id": 5,
       "email": "kieutram@massage_hce.com",
       "password": "123456",
       "fullname": "Đặng Kiều Trâm",
-      "age": "22",
-      "id": 5,
-      "exp": "4"
-    },
-    {
-      "email": "trongnhan23vn@gmail.com",
-      "password": "$2a$10$DZ.ur66Fg9NNc4Sd4zs9ZOVdt2tSK1hJowPLZPe20Q/9dfuOoUpNm",
-      "fullname": "nhânnnnn",
-      "age": "33",
-      "exp": "34",
-      "id": 6
-    },
-    {
-      "email": "lagiang1811@gmail.com",
-      "password": "$2a$10$MM6il/HGwhurcV2HN/6Xl.jZztbpFlcQIyBXPYQM7Qb5/h6F1VCEa",
-      "fullname": "Giangg",
-      "age": "18",
-      "exp": "1",
-      "id": 8
+      "age": 22,
+      "exp": 2
     }
   ]
 }
